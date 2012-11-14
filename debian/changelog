@@ -1,3 +1,9 @@
+argus-pep-common (2.3.0-1) unstable; urgency=low
+
+  * Upstream version 2.3.0 for Debian.
+
+ -- Valery Tschopp <valery.tschopp@switch.ch>  Wed, 14 Nov 2012 14:59:16 +0100
+
 argus-pep-common (2.2.1-1) unstable; urgency=low
 
   * Initial release for Debian (Closes: #23482)
