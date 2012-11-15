@@ -21,6 +21,9 @@ name = argus-pep-common
 version = 2.3.0
 release = 1
 
+git_url = https://github.com/argus-authz/$(name).git
+git_branch = EMI-3
+
 dist_url = https://github.com/downloads/argus-authz/$(name)/$(name)-$(version).tar.gz
 
 debbuild_dir = $(CURDIR)/debbuild
@@ -48,3 +51,10 @@ deb: pre_debbuild
 	cd $(debbuild_dir)/$(name)-$(version) && debuild -us -uc 
 	find $(debbuild_dir) -maxdepth 1 -name "*.deb" -exec cp '{}' . \;
 
+git_source:
+	@echo "Checkout source from $(git_url)"
+	git clone $(git_url)
+	(cd $(name) && git checkout $(git_branch))
+	(cd $(name) && make dist)
+	mkdir -p $(debbuild_dir)
+	cp $(name)/$(name)-$(version).tar.gz $(debbuild_dir)/$(name)_$(version).orig.tar.gz
